@@ -7,7 +7,7 @@ const convertBtn = document.getElementById("convert-btn")
 const inputData = document.getElementById("input-number")
 
 
-function _convert(number){ // Retunrs object with converted data and input value
+function _convert(number){ // Returns object with converted data and input value
     number = Number(number)
     return {
         feets: (number*3.281).toFixed(3),
@@ -35,7 +35,10 @@ function _render(object){ // Puts data in supporting text
             `${object.input} kilos = ${object.mass} pounds | 
                 ${object.input} kilos = ${object.pounds} pounds`
 }
-function covertBtnProcess(){
+function covertBtnProcess(){ // Function thatmust be called after button clicked
+    if (!inputData.value){
+        return
+    }
     const obj = _convert(inputData.value)
     inputData.value = ""
     _render(obj)
