@@ -7,28 +7,37 @@ const convertBtn = document.getElementById("convert-btn")
 const inputData = document.getElementById("input-number")
 
 
-function convert(number){ // Retunrs object with converted data and input value
-    inputData.innerText = ""
+function _convert(number){ // Retunrs object with converted data and input value
+    number = Number(number)
     return {
-        length: (number*3.281).toFixed(3),
-        volume: (number*0.264).toFixed(3),
-        mass: (number*2.204).toFixed(3),
+        feets: (number*3.281).toFixed(3),
+        gallons: (number*0.264).toFixed(3),
+        pounds: (number*2.204).toFixed(3),
+        meters: (number/3.281).toFixed(3),
+        liers:  (number/0.264).toFixed(3),
+        kilograms: (number/2.204).toFixed(3),
         input: number,
     }
 }
-function render(object){
+function _render(object){ // Puts data in supporting text
     document.getElementById("length")
-        .querySelector("supporting-text").textContent = 
-            `${object.input} meters = ${object.length} feet | 
-                ${object.length} feet = 6.${object.input} meters`
+        .querySelector(".supporting-text").textContent = 
+            `${object.input} meters = ${object.feets} feet | 
+                ${object.input} feet = ${object.meters} meters`
 
     document.getElementById("volume")
-        .querySelector("supporting-text").textContent = 
-            `${object.input} meters = ${object.volume} feet | 
-                ${object.volume} feet = 6.${object.input} meters`
+        .querySelector(".supporting-text").textContent = 
+            `${object.input} liters = ${object.gallons} gallons | 
+                ${object.input} gallons = ${object.liters} liters`
     
     document.getElementById("mass")
-        .querySelector("supporting-text").textContent = 
-            `${object.input} meters = ${object.mass} feet | 
-                ${object.mass} feet = 6.${object.input} meters`
+        .querySelector(".supporting-text").textContent = 
+            `${object.input} kilos = ${object.mass} pounds | 
+                ${object.input} kilos = ${object.pounds} pounds`
+}
+function covertBtnProcess(){
+    const obj = _convert(inputData.value)
+    inputData.value = ""
+    _render(obj)
+
 }
