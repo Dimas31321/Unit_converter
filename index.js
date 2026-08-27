@@ -32,10 +32,10 @@ function _render(object){ // Puts data in supporting text
     
     document.getElementById("mass")
         .querySelector(".supporting-text").textContent = 
-            `${object.input} kilos = ${object.mass} pounds | 
+            `${object.input} kilos = ${object.pounds} pounds | 
                 ${object.input} kilos = ${object.pounds} pounds`
 }
-function covertBtnProcess(){ // Function thatmust be called after button clicked
+function covertBtnProcess(){ // Function that must be called after button clicked
     if (!inputData.value){
         return
     }
