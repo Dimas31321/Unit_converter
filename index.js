@@ -14,7 +14,7 @@ function _convert(number){ // Returns object with converted data and input value
         gallons: (number*0.264).toFixed(3),
         pounds: (number*2.204).toFixed(3),
         meters: (number/3.281).toFixed(3),
-        liers:  (number/0.264).toFixed(3),
+        liters:  (number/0.264).toFixed(3),
         kilograms: (number/2.204).toFixed(3),
         input: number,
     }
