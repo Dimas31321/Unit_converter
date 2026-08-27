@@ -33,9 +33,9 @@ function _render(object){ // Puts data in supporting text
     document.getElementById("mass")
         .querySelector(".supporting-text").textContent = 
             `${object.input} kilos = ${object.pounds} pounds | 
-                ${object.input} kilos = ${object.pounds} pounds`
+                ${object.pounds} pounds = ${object.kilograms} kilos`
 }
-function covertBtnProcess(){ // Function that must be called after button clicked
+function convertBtnProcess(){ // Function that must be called after button clicked
     if (!inputData.value){
         return
     }
