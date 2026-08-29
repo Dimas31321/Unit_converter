@@ -44,7 +44,7 @@ function convertBtnProcess(){ // Function that must be called after button click
         console.log('No value')
         return
     }
-    if (!isNumber(inputData.value)){
+    if (!isNumber(Number(inputData.value))) {
         console.log("Not a number")
         notification.textContent = "Invalid value: not a number. Please try again."
         return
