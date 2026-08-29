@@ -1,0 +1,64 @@
+/*
+1 meter = 3.281 feet
+1 liter = 0.264 gallon
+1 kilogram = 2.204 pound
+*/
+const convertBtn = document.getElementById("convert-btn")
+const inputData = document.getElementById("input-number")
+const notification = document.getElementById("wrong-value-notification")
+
+function isNumber(value) {
+    return Number.isFinite(value);
+}
+
+function _convert(number){ // Returns object with converted data and input value
+    number = Number(number)
+    return {
+        feet: (number*3.281).toFixed(3),
+        gallons: (number*0.264).toFixed(3),
+        pounds: (number*2.204).toFixed(3),
+        meters: (number/3.281).toFixed(3),
+        liters:  (number/0.264).toFixed(3),
+        kilograms: (number/2.204).toFixed(3),
+        input: number,
+    }
+}
+function _render(object){ // Puts data in supporting text
+    document.getElementById("length")
+        .querySelector(".supporting-text").textContent =
+            `${object.input} meters = ${object.feet} feet |
+                ${object.input} feet = ${object.meters} meters`
+
+    document.getElementById("volume")
+        .querySelector(".supporting-text").textContent =
+            `${object.input} liters = ${object.gallons} gallons |
+                ${object.input} gallons = ${object.liters} liters`
+
+    document.getElementById("mass")
+        .querySelector(".supporting-text").textContent =
+            `${object.input} kilos = ${object.pounds} pounds |
+                ${object.input} pounds = ${object.kilograms} kilos`
+}
+function convertBtnProcess(){ // Function that must be called after button clicked
+    if (!inputData.value){
+        console.log('No value')
+        return
+    }
+    if (!isNumber(Number(inputData.value))) {
+        console.log("Not a number")
+        notification.textContent = "Invalid value: not a number. Please try again."
+        return
+    }
+    notification.textContent = ""
+    const obj = _convert(inputData.value)
+    inputData.value = ""
+    _render(obj)
+
+}
+inputData.addEventListener("keydown", function (event){
+    if (event.key === 'Enter') {
+        console.log('Enter pressed!')
+        convertBtnProcess()
+        inputData.value = ""
+    }
+})
