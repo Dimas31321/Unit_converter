@@ -5,7 +5,11 @@
 */
 const convertBtn = document.getElementById("convert-btn")
 const inputData = document.getElementById("input-number")
+const notification = document.getElementById("wrong-value-notification")
 
+function isNumber(value) {
+    return Number.isFinite(value);
+}
 
 function _convert(number){ // Returns object with converted data and input value
     number = Number(number)
@@ -21,26 +25,40 @@ function _convert(number){ // Returns object with converted data and input value
 }
 function _render(object){ // Puts data in supporting text
     document.getElementById("length")
-        .querySelector(".supporting-text").textContent = 
-            `${object.input} meters = ${object.feets} feet | 
+        .querySelector(".supporting-text").textContent =
+            `${object.input} meters = ${object.feets} feet |
                 ${object.input} feet = ${object.meters} meters`
 
     document.getElementById("volume")
-        .querySelector(".supporting-text").textContent = 
-            `${object.input} liters = ${object.gallons} gallons | 
+        .querySelector(".supporting-text").textContent =
+            `${object.input} liters = ${object.gallons} gallons |
                 ${object.input} gallons = ${object.liters} liters`
-    
+
     document.getElementById("mass")
-        .querySelector(".supporting-text").textContent = 
-            `${object.input} kilos = ${object.pounds} pounds | 
+        .querySelector(".supporting-text").textContent =
+            `${object.input} kilos = ${object.pounds} pounds |
                 ${object.input} pounds = ${object.kilograms} kilos`
 }
 function convertBtnProcess(){ // Function that must be called after button clicked
     if (!inputData.value){
+        console.log('No value')
         return
     }
+    if (!isNumber(inputData.value)){
+        console.log("Not a number")
+        notification.textContent = "Invalid value: not a number. Please try again."
+        return
+    }
+    notification.textContent = ""
     const obj = _convert(inputData.value)
     inputData.value = ""
     _render(obj)
 
 }
+inputData.addEventListener("keydown", function (event){
+    if (event.key === 'Enter') {
+        console.log('Enter pressed!')
+        convertBtnProcess()
+        inputData.value = ""
+    }
+})

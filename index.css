@@ -1,3 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.full-screen {
+  width: 100vw;
+  height: 100vh;
+}
+#wrong-value-notification{
+    color: red;
+}
 body {
     margin: 0;
     background: #F4F4F4;
@@ -10,7 +22,7 @@ body {
     margin: 50px auto;
 }
 
-/* Фиолетовая верхняя часть */
+/* Фиолетовая верхнƒяя часть */
 
 #header {
     width: 550px;
@@ -62,7 +74,7 @@ border-radius: 5px;
 
     position: absolute;
     width: 117px;
-    height: 42px;
+    height: 35px;
     left: 217px;
     top: 209px;
 
