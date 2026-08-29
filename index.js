@@ -14,7 +14,7 @@ function isNumber(value) {
 function _convert(number){ // Returns object with converted data and input value
     number = Number(number)
     return {
-        feets: (number*3.281).toFixed(3),
+        feet: (number*3.281).toFixed(3),
         gallons: (number*0.264).toFixed(3),
         pounds: (number*2.204).toFixed(3),
         meters: (number/3.281).toFixed(3),
@@ -26,7 +26,7 @@ function _convert(number){ // Returns object with converted data and input value
 function _render(object){ // Puts data in supporting text
     document.getElementById("length")
         .querySelector(".supporting-text").textContent =
-            `${object.input} meters = ${object.feets} feet |
+            `${object.input} meters = ${object.feet} feet |
                 ${object.input} feet = ${object.meters} meters`
 
     document.getElementById("volume")
